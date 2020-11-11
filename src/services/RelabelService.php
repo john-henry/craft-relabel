@@ -341,7 +341,7 @@ class RelabelService extends Component
             $labelsForFieldLayout = (new Query())
                 ->select(['fieldId', 'name'])
                 ->from('{{%relabel}}')
-                ->where(['fieldLayoutId' => $fieldLayoutId])
+                ->where(['categorygroups.fieldLayoutId' => $fieldLayoutId])
                 ->all();
             foreach ($labelsForFieldLayout as $label){
                 $sourceFields[$key]["field:{$label['fieldId']}"] = [
@@ -361,7 +361,7 @@ class RelabelService extends Component
                 $labelsForFieldLayout = (new Query())
                     ->select(['fieldId', 'name'])
                     ->from('{{%relabel}}')
-                    ->where(['fieldLayoutId' => $fieldLayoutId])
+                    ->where(['entrytypes.fieldLayoutId' => $fieldLayoutId])
                     ->all();
                 foreach ($labelsForFieldLayout as $label){
                     $sourceFields[$key]["field:{$label['fieldId']}"] = [
@@ -1034,7 +1034,7 @@ class RelabelService extends Component
                     $id = (new Query())
                         ->select(['id'])
                         ->from('{{%globalsets}}')
-                        ->where(['fieldLayoutId' => $id])
+                        ->where(['globalsets.fieldLayoutId' => $id])
                         ->scalar();
                     if($id){
                         $link = 'settings/globals/' . $id;
@@ -1044,7 +1044,7 @@ class RelabelService extends Component
                     $ids = (new Query())
                         ->select(['id', 'sectionId'])
                         ->from('{{%entrytypes}}')
-                        ->where(['fieldLayoutId' => $id])
+                        ->where(['entrytypes.fieldLayoutId' => $id])
                         ->one();
 
                     if($ids && isset($ids['id'], $ids['sectionId'])){
@@ -1058,7 +1058,7 @@ class RelabelService extends Component
                     $id = (new Query())
                         ->select(['id'])
                         ->from('{{%volumes}}')
-                        ->where(['fieldLayoutId' => $id])
+                        ->where(['volumes.fieldLayoutId' => $id])
                         ->scalar();
                     if($id){
                         $link = 'settings/assets/volumes/' . $id;
@@ -1068,7 +1068,7 @@ class RelabelService extends Component
                     $id = (new Query())
                         ->select(['id'])
                         ->from('{{%categorygroups}}')
-                        ->where(['fieldLayoutId' => $id])
+                        ->where(['categorygroups.fieldLayoutId' => $id])
                         ->scalar();
                     if($id){
                         $link = 'settings/categories/' . $id;
