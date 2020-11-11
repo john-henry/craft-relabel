@@ -1034,7 +1034,7 @@ class RelabelService extends Component
                     $id = (new Query())
                         ->select(['id'])
                         ->from('{{%globalsets}}')
-                        ->where(['globalsets.fieldLayoutId' => $id])
+                        ->where(['fieldLayoutId' => $id])
                         ->scalar();
                     if($id){
                         $link = 'settings/globals/' . $id;
